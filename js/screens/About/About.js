@@ -7,6 +7,7 @@ import {
   TouchableHighlight
 } from "react-native";
 import styles from "./styles";
+import ConductItem from "../../components/ConductItem";
 
 const About = ({ data }) => {
   return (
@@ -17,8 +18,8 @@ const About = ({ data }) => {
           style={styles.logo}
         />
       </View>
-      <View>
-        <ScrollView>
+      <View style={styles.ScrollView}>
+        <ScrollView style={styles.view}>
           <Text style={styles.text}>
             R10 is a conference that focuses on just about any topic related to
             dev.
@@ -30,10 +31,15 @@ const About = ({ data }) => {
           </Text>
           <Text style={styles.headings}>Code of Conduct</Text>
 
+          <View>
+            {data.allConducts.map(conduct => {
+              return <ConductItem conduct={conduct} key={conduct.id} />;
+            })}
+          </View>
+
           <View style={styles.aboutFooter}>
             <Text>© RED Academy 2017</Text>
           </View>
-          <View />
         </ScrollView>
       </View>
     </View>
@@ -41,30 +47,3 @@ const About = ({ data }) => {
 };
 
 export default About;
-
-{
-  /* <View>
-  {data.allConducts.map(conduct => {
-    return (
-      <View key={conduct.id}>
-        <TouchableHighlight
-          underlayColor="gray"
-          activeOpacity={0.6}
-          onPress={() =>
-            this.setState({ show: !this.state.show })
-          }
-        >
-          <View>
-            <Text style={styles.headings}>{conduct.title}</Text>
-          </View>
-        </TouchableHighlight>
-        {this.state.show && (
-          <View>
-            <Text style={styles.text}>{conduct.description}</Text>
-          </View>
-        )}
-      </View>
-    );
-  })}
-</View> */
-}

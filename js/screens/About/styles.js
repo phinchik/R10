@@ -32,11 +32,19 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    marginBottom: 10
+    marginBottom: 10,
+    fontFamily: "Montserrat-Regular"
   },
   headings: {
     fontSize: 30,
-    marginBottom: 10
+    marginBottom: 10,
+    fontFamily: "Montserrat-Regular"
+  },
+  ScrollView: {
+    width: width
+  },
+  view: {
+    padding: 10
   }
 });
 
