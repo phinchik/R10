@@ -11,8 +11,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF",
     fontSize: 20,
-    marginRight: 5,
-    marginLeft: 5
+    marginRight: 10,
+    marginLeft: 10
   },
   logo: {
     justifyContent: "center",
@@ -26,8 +26,9 @@ const styles = StyleSheet.create({
     alignContent: "center",
     borderBottomWidth: 1,
     borderBottomColor: "#e6e6e6",
-    marginBottom: 10,
-    width: width
+
+    width: width,
+    marginTop: 80
   },
   text: {
     fontSize: 20,

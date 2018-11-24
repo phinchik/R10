@@ -1,20 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import AppNavigator from "./navigation/RootStackNavigator";
-// import { ApolloProvider } from "react-apollo";
-// import client from "../js/config/api";
+import { FavesProvider } from "../js/context/FavesContext/FavesProvider";
+import { ApolloProvider } from "react-apollo";
+import client from "./config/api";
 
 export default class App extends Component {
   render() {
-    return <AppNavigator />;
+    return (
+      <ApolloProvider client={client}>
+        <FavesProvider>
+          <AppNavigator />
+        </FavesProvider>
+      </ApolloProvider>
+    );
   }
 }
 

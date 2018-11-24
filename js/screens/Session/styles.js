@@ -6,19 +6,13 @@ var height = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    justifyContent: "flex-end"
-  },
-  map: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+    fontSize: 20,
+    marginRight: 5,
+    marginLeft: 5
   }
 });
 
