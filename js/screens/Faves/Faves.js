@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Text, View, SectionList } from "react-native";
 import styles from "./styles";
 
-const Schedule = () => {
+const Faves = ({ allSessions }) => {
+  console.log("this is fave");
   return (
     <SectionList
       renderItem={({ item, index, section }) => (
@@ -24,4 +25,4 @@ const Schedule = () => {
   );
 };
 
-export default Schedule;
+export default Faves;
