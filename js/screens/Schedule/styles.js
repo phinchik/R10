@@ -24,10 +24,8 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Light"
   },
   heart: {
-    color: "red",
     fontSize: 20,
-    position: "absolute",
-    right: 0,
+
     marginTop: 20,
     marginRight: 10
   },
@@ -35,7 +33,9 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Regular",
     fontSize: 15,
     width: width,
-    marginTop: 10
+    marginTop: 10,
+    paddingRight: 10,
+    paddingLeft: 10
   },
   itemContainer: {
     flexDirection: "row",
@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
   location: {
     color: "#999999",
     fontFamily: "Montserrat-Light",
-    marginBottom: 5
+    marginBottom: 5,
+    paddingRight: 10,
+    paddingLeft: 10
   }
 });
 

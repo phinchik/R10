@@ -3,10 +3,9 @@ import { Text, View, SectionList, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
 import moment from "moment";
+import FaveItem from "../../components/FaveItem";
 
 const Schedule = ({ sessions, navigation }) => {
-  // goToFaves = (id, item) => {};
-
   return (
     <SectionList
       renderItem={({ item }) => (
@@ -18,9 +17,7 @@ const Schedule = ({ sessions, navigation }) => {
           >
             <Text style={styles.title}>{item.title}</Text>
             <Text style={styles.location}>{item.location}</Text>
-            <Text style={styles.heart} onPress={() => alert("hello")}>
-              ♥
-            </Text>
+            <FaveItem style={styles.heart} id={item.id} />
           </TouchableOpacity>
         </View>
       )}
