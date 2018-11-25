@@ -5,7 +5,7 @@ import { withNavigation } from "react-navigation";
 import moment from "moment";
 
 const Schedule = ({ sessions, navigation }) => {
-  goToFaves = (id, item) => {};
+  // goToFaves = (id, item) => {};
 
   return (
     <SectionList

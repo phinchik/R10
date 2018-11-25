@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import Session from "./Session";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import { View, Text } from "react-native";
-import { FavesContext } from "../../context/FavesContext/FavesProvider";
+import { ActivityIndicator, Text } from "react-native";
+import FavesContext from "../../context/FavesContext/FavesProvider";
+import { formatSessionData } from "../../lib/helper";
 
 const GET_SESSIONDATA = gql`
   query Session($filter: SessionFilter) {
     allSessions(filter: $filter) {
       location
       title
+      id
       description
       speaker {
         name
@@ -24,23 +26,26 @@ export default class SessionContainer extends Component {
   render() {
     return (
       <FavesContext.Consumer>
-        {({ faveIds }) => {
-          <View>
-            <Query
-              query={GET_SESSIONDATA}
-              variables={{ filter: { id_in: faveIds } }}
-            >
-              {({ loading, error, data }) => {
-                console.log("this is the data", data);
-                if (loading) return <Text>Loading</Text>;
-                if (error) return `Error, ${error.message}`;
-                if (data) {
-                  return <Session sessions={data} faveId={faveIds} />;
-                }
-              }}
-            </Query>
-          </View>;
-        }}
+        {({ faveIds }) => (
+          <Query
+            query={GET_SESSIONDATA}
+            variables={{ SessionFilter: { id_in: faveIds } }}
+          >
+            {({ loading, error, data }) => {
+              if (loading) return <ActivityIndicator />;
+              if (error) return <Text>{error}</Text>;
+              if (data) {
+                return (
+                  <Session
+                    sessionId={this.props.navigation.state.params.key}
+                    allSessions={formatSessionData(data.allSessions)[0].data}
+                    sessionIds={faveIds}
+                  />
+                );
+              }
+            }}
+          </Query>
+        )}
       </FavesContext.Consumer>
     );
   }

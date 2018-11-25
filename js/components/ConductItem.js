@@ -42,4 +42,12 @@ class ConductItem extends Component {
   }
 }
 
+ConductItem.propTypes = {
+  conduct: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired
+  }).isRequired
+};
+
 export default ConductItem;
