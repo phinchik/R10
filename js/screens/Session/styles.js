@@ -7,7 +7,6 @@ var height = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    backgroundColor: "#F5FCFF",
     fontSize: 20,
     marginRight: 10,
     marginLeft: 10,

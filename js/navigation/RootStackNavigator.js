@@ -1,5 +1,4 @@
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import React, { Component } from "react";
 import AboutStack from "./NavigationLayout";
 import ScheduleStack from "./NavigationLayout";
 import FavesStack from "./NavigationLayout";

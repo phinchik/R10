@@ -1,9 +1,10 @@
 import React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import moment from "moment";
+import { withNavigation } from "react-navigation";
 
-const Session = ({ sessionId, allSessions }) => {
+const Session = ({ sessionId, allSessions, navigation }) => {
   const scheduleId = sessionId;
   const session = allSessions.filter(session => {
     return session.id === scheduleId;
@@ -20,16 +21,23 @@ const Session = ({ sessionId, allSessions }) => {
         {moment(session[0].startTime).format("LT")}
       </Text>
       <Text style={styles.description}>{session[0].description}</Text>
+
       <View style={styles.speakerContainer}>
-        <Text style={styles.text}>Presented by:</Text>
-        <Image
-          style={styles.image}
-          source={{ uri: session[0].speaker.image }}
-        />
-        <Text style={styles.speakerName}>{session[0].speaker.name}</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Speaker", { key: session.id });
+          }}
+        >
+          <Text style={styles.text}>Presented by:</Text>
+          <Image
+            style={styles.image}
+            source={{ uri: session[0].speaker.image }}
+          />
+          <Text style={styles.speakerName}>{session[0].speaker.name}</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default Session;
+export default withNavigation(Session);

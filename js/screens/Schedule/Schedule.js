@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, View, SectionList, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
@@ -12,7 +12,7 @@ const Schedule = ({ sessions, navigation }) => {
         <View style={styles.itemContainer} key={item.id}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Session", { key: item.id });
+              navigation.navigate("Session", { key: item.id, item });
             }}
           >
             <Text style={styles.title}>{item.title}</Text>

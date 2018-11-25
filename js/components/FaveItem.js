@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
@@ -17,6 +17,7 @@ class FaveItem extends Component {
   };
 
   render() {
+    console.log("propsss", this.props);
     return (
       <View key={this.props.id} onPress={() => this.toggleItem()}>
         {this.state.fave === true ? (
@@ -38,5 +39,9 @@ class FaveItem extends Component {
     );
   }
 }
+
+// FaveItem.propTypes = {
+//   id: PropTypes.string.isRequired
+// };
 
 export default FaveItem;
