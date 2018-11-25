@@ -5,13 +5,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#9963ea",
     fontSize: 20,
-    fontFamily: "Montserrat-Regular"
+    fontFamily: "Montserrat-Light"
   },
   itemDescription: {
     marginTop: 10,
     marginBottom: 10,
     fontSize: 16,
-    fontFamily: "Montserrat-Regular"
+    fontFamily: "Montserrat-Light"
   }
 });
 

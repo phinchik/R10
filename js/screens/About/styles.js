@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginBottom: 10,
-    fontFamily: "Montserrat-Regular"
+    fontFamily: "Montserrat-Light"
   },
   headings: {
     fontSize: 30,

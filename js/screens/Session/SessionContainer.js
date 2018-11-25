@@ -23,27 +23,25 @@ const GET_SESSIONDATA = gql`
 export default class SessionContainer extends Component {
   render() {
     return (
-      <View>
-        <Text>Hello</Text>
-      </View>
-      // <FavesContext.Consumer>
-      //   {({ faveId }) => {
-      //     <View>
-      //       <Query
-      //         query={GET_SESSIONDATA}
-      //         variables={{ filter: { id_in: faveIds } }}
-      //       >
-      //         {({ loading, error, data }) => {
-      //           if (loading) return <Text>Loading</Text>;
-      //           if (error) return `Error, ${error.message}`;
-      //           if (data) {
-      //             return <Session sessions={data} faveId={faveIds} />;
-      //           }
-      //         }}
-      //       </Query>
-      //     </View>;
-      //   }}
-      // </FavesContext.Consumer>
+      <FavesContext.Consumer>
+        {({ faveIds }) => {
+          <View>
+            <Query
+              query={GET_SESSIONDATA}
+              variables={{ filter: { id_in: faveIds } }}
+            >
+              {({ loading, error, data }) => {
+                console.log("this is the data", data);
+                if (loading) return <Text>Loading</Text>;
+                if (error) return `Error, ${error.message}`;
+                if (data) {
+                  return <Session sessions={data} faveId={faveIds} />;
+                }
+              }}
+            </Query>
+          </View>;
+        }}
+      </FavesContext.Consumer>
     );
   }
 }

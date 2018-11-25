@@ -19,12 +19,35 @@ const styles = StyleSheet.create({
     backgroundColor: "#e6e6e6",
     width: width,
     height: 25,
-    paddingLeft: 10
+    paddingLeft: 10,
+    paddingTop: 5,
+    fontFamily: "Montserrat-Light"
   },
   heart: {
     color: "red",
     fontSize: 20,
-    paddingTop: 10
+    position: "absolute",
+    right: 0,
+    marginTop: 20,
+    marginRight: 10
+  },
+  title: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: 15,
+    width: width,
+    marginTop: 10
+  },
+  itemContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    height: 70,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e6e6e6"
+  },
+  location: {
+    color: "#999999",
+    fontFamily: "Montserrat-Light",
+    marginBottom: 5
   }
 });
 

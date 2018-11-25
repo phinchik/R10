@@ -16,7 +16,8 @@ const Schedule = ({ sessions, navigation }) => {
               navigation.navigate("Session", { key: item.id });
             }}
           >
-            <Text>{item.title}</Text>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.location}>{item.location}</Text>
             <Text style={styles.heart} onPress={() => alert("hello")}>
               ♥
             </Text>
