@@ -14,20 +14,30 @@ class FavesProvider extends Component {
     this.getAllFaves();
   }
 
-  createFave(id, date) {
+  createFave = (id, date) => {
     realm.write(() => {
-      realm.create("Faves", { id: id, faved_on: date });
+      realm.create("Faves", { id, faved_on: new Date() });
     });
-  }
+    this.getAllFaves();
+  };
 
-  deleteFave(id) {
+  // allFaves = () => {
+  //   let faves = realm.objects("Faves").map(p => p.id);
+  //   return faves;
+  // };
+
+  // refreshStateIds = () => {
+  //   this.setState({ faveIds: this.allFaves() });
+  // };
+
+  deleteFave = id => {
     realm.write(() => {
-      realm.delete("Faves", { id: id }).then(() => {
-        let favs = realm.objects("Faves");
-        this.setState({ faveIds: favs });
-      });
+      realm.delete(realm.objectForPrimaryKey("Faves", id));
+      let favs = realm.objects("Faves");
+      this.setState({ faveIds: favs });
     });
-  }
+    this.getAllFaves();
+  };
 
   getAllFaves() {
     realm.write(() => {
@@ -35,6 +45,10 @@ class FavesProvider extends Component {
       this.setState({ faveIds: favs });
     });
   }
+
+  // reset() {
+  //   this.getAllFaves();
+  // }
 
   render() {
     return (

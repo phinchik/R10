@@ -8,6 +8,16 @@ const Faves = {
     faved_on: { type: "date" }
   }
 };
-const realm = new Realm({ schema: [Faves] });
+
+const UpdatedFaves = {
+  name: "Faves",
+  primaryKey: "id",
+  properties: {
+    id: "string",
+    faved_on: { type: "date" }
+  }
+};
+
+const realm = new Realm({ schema: [UpdatedFaves], schemaVersion: 1 });
 
 export default realm;

@@ -17,6 +17,7 @@ const GET_SESSIONDATA = gql`
         name
         image
         id
+        bio
       }
     }
   }
@@ -26,21 +27,22 @@ export default class SessionContainer extends Component {
   render() {
     return (
       <FavesContext.Consumer>
-        {({ faveIds }) => (
+        {({ faveIds, createFave, deleteFave, getAllFaves }) => (
           <Query
             query={GET_SESSIONDATA}
             variables={{ SessionFilter: { id_in: faveIds } }}
           >
             {({ loading, error, data }) => {
-              console.log("this is session", data);
               if (loading) return <ActivityIndicator />;
               if (error) return <Text>{error}</Text>;
               if (data) {
                 return (
                   <Session
                     sessionId={this.props.navigation.state.params.key}
-                    allSessions={formatSessionData(data.allSessions)[0].data}
+                    allSessions={formatSessionData(data.allSessions)}
                     sessionIds={faveIds}
+                    createFave={createFave}
+                    deleteFave={deleteFave}
                   />
                 );
               }

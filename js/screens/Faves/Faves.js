@@ -3,7 +3,6 @@ import { Text, View, SectionList } from "react-native";
 import styles from "./styles";
 
 const Faves = ({ allSessions, faveIds }) => {
-  console.log("this is fave", faveIds);
   return (
     <SectionList
       renderItem={({ item, index, section }) => (

@@ -4,6 +4,7 @@ import { ActivityIndicator, Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { formatSessionData } from "../../lib/helper";
+import FavesContext from "../../context/FavesContext/FavesProvider";
 
 const GET_SCHEDULE = gql`
   query {
@@ -20,15 +21,32 @@ const GET_SCHEDULE = gql`
 export default class ScheduleContainer extends Component {
   render() {
     return (
-      <Query query={GET_SCHEDULE}>
-        {({ loading, error, data }) => {
-          if (loading) return <ActivityIndicator />;
-          if (error) return <Text>{error}</Text>;
-          if (data) {
-            return <Schedule sessions={formatSessionData(data.allSessions)} />;
-          }
+      <FavesContext.Consumer>
+        {({ faveIds }) => {
+          return (
+            <Query query={GET_SCHEDULE}>
+              {({ loading, error, data }) => {
+                const ids = [];
+
+                for (let i = 0; i < faveIds.length; i++) {
+                  ids.push(faveIds[i].id);
+                }
+
+                if (loading) return <ActivityIndicator />;
+                if (error) return <Text>{error}</Text>;
+                if (data) {
+                  return (
+                    <Schedule
+                      faveIds={ids}
+                      sessions={formatSessionData(data.allSessions)}
+                    />
+                  );
+                }
+              }}
+            </Query>
+          );
         }}
-      </Query>
+      </FavesContext.Consumer>
     );
   }
 }
