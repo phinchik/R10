@@ -2,35 +2,32 @@ import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import moment from "moment";
-import { withNavigation } from "react-navigation";
 import SpeakerModal from "../../components/SpeakerModal";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const Session = ({
   sessionId,
-  sessionIds,
-  faveIds,
   allSessions,
   createFave,
-  deleteFave
+  deleteFave,
+  favouriteId
 }) => {
-  const listOfFaveIds = Array.from(sessionIds);
+  let sessions = [];
+  for (let i = 0; i < allSessions.length; i++) {
+    sessions.push(...allSessions[i].data);
+  }
 
-  const searchSession = listOfFaveIds.filter(session => {
-    return session.id === faveIds;
-  });
+  let session;
+  for (let i = 0; i < sessions.length; i++) {
+    if (sessions[i].id === sessionId) {
+      session = sessions[i];
+    }
+  }
 
-  const sessionOwner = allSessions.data[0].filter(session => {
-    return session;
-  });
-
-  console.log(sessionOwner);
-
-  const isFaved = searchSession.length;
-
+  const isFaved = favouriteId.includes(session.id);
   return (
     <View style={styles.container}>
-      <Text style={styles.location}>{sessionOwner.location}</Text>
+      <Text style={styles.location}>{session.location}</Text>
       {isFaved ? (
         <Icon
           style={styles.heart}
@@ -47,15 +44,13 @@ const Session = ({
         />
       )}
 
-      <Text style={styles.title}>{sessionOwner.title}</Text>
-      <Text style={styles.time}>
-        {moment(sessionOwner.startTime).format("LT")}
-      </Text>
-      <Text style={styles.description}>{sessionOwner.description}</Text>
+      <Text style={styles.title}>{session.title}</Text>
+      <Text style={styles.time}>{moment(session.startTime).format("LT")}</Text>
+      <Text style={styles.description}>{session.description}</Text>
 
       <View style={styles.speakerContainer}>
         <Text>Presented by:</Text>
-        <SpeakerModal speaker={sessionOwner.speaker} />
+        <SpeakerModal speaker={session.speaker} />
       </View>
       <TouchableOpacity
         onPress={() => {

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     position: "absolute",
     top: 0,
-    right: 0
+    right: 10
   },
   title: {
     fontFamily: "Montserrat-Regular",

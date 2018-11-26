@@ -38,6 +38,12 @@ export default class SessionContainer extends Component {
               variables={{ SessionFilter: { id_in: faveIds } }}
             >
               {({ loading, error, data }) => {
+                const ids = [];
+
+                for (let i = 0; i < faveIds.length; i++) {
+                  ids.push(faveIds[i].id);
+                }
+
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>{error}</Text>;
                 if (data) {
@@ -48,6 +54,7 @@ export default class SessionContainer extends Component {
                       sessionIds={faveIds}
                       createFave={createFave}
                       deleteFave={deleteFave}
+                      favouriteId={ids}
                     />
                   );
                 }
