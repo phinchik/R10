@@ -1,13 +1,7 @@
-import React, { Component } from "react";
-import {
-  Text,
-  View,
-  Image,
-  ScrollView,
-  TouchableHighlight
-} from "react-native";
-import styles from "./styles";
+import React from "react";
+import { Image, ScrollView, Text, View } from "react-native";
 import ConductItem from "../../components/ConductItem";
+import styles from "./styles";
 
 const About = ({ data }) => {
   return (

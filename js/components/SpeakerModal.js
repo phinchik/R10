@@ -9,6 +9,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { get } from "lodash";
+import styles from "./styles";
 
 export default class SpeakerModal extends Component {
   constructor(props) {
@@ -42,10 +43,10 @@ export default class SpeakerModal extends Component {
               }
               title="x"
             />
-            <Text>About the Speaker</Text>
+            <Text style={styles.text}>About the Speaker</Text>
           </View>
           <ScrollView>
-            <Image source={{ uri: image }} />
+            <Image style={styles.image} source={{ uri: image }} />
             <Text>{name}</Text>
             <Text>{bio}</Text>
           </ScrollView>
@@ -58,8 +59,10 @@ export default class SpeakerModal extends Component {
             })
           }
         >
-          <Image source={{ uri: image }} style={{ height: 50, width: 50 }} />
-          <Text>{name}</Text>
+          <View style={styles.speaker}>
+            <Image source={{ uri: image }} style={styles.image} />
+            <Text>{name}</Text>
+          </View>
         </TouchableOpacity>
       </ScrollView>
     );

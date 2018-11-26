@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Session from "./Session";
-import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import React, { Component } from "react";
+import { Query } from "react-apollo";
 import { ActivityIndicator, Text } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 import { formatSessionData } from "../../lib/helper";
+import Session from "./Session";
 
 const GET_SESSIONDATA = gql`
   query Session($filter: SessionFilter) {

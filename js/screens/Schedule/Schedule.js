@@ -1,9 +1,9 @@
-import React from "react";
-import { Text, View, SectionList, TouchableOpacity } from "react-native";
-import styles from "./styles";
-import { withNavigation } from "react-navigation";
 import moment from "moment";
+import React from "react";
+import { SectionList, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { withNavigation } from "react-navigation";
+import styles from "./styles";
 
 const Schedule = ({ sessions, navigation, faveIds }) => {
   return (

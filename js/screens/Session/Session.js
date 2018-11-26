@@ -1,9 +1,10 @@
-import React from "react";
-import { Text, View, TouchableOpacity } from "react-native";
-import styles from "./styles";
 import moment from "moment";
-import SpeakerModal from "../../components/SpeakerModal";
+import PropTypes from "prop-types";
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import SpeakerModal from "../../components/SpeakerModal";
+import styles from "./styles";
 
 const Session = ({
   sessionId,
@@ -61,10 +62,23 @@ const Session = ({
           }
         }}
       >
-        <Text>{isFaved ? "Unfavourite" : "Favourite"}</Text>
+        <Text>
+          {isFaved ? (
+            <Text style={styles.sessionButton}>Remove From Faves</Text>
+          ) : (
+            <Text style={styles.sessionButton}>Add To Faves</Text>
+          )}
+        </Text>
       </TouchableOpacity>
     </View>
   );
+};
+
+Session.propTypes = {
+  sessionId: PropTypes.string,
+  createFave: PropTypes.func,
+  deleteFave: PropTypes.func,
+  favouriteId: PropTypes.object
 };
 
 export default Session;

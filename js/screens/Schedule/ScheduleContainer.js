@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Schedule from "./Schedule";
-import { ActivityIndicator, Text } from "react-native";
-import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import { formatSessionData } from "../../lib/helper";
+import React, { Component } from "react";
+import { Query } from "react-apollo";
+import { ActivityIndicator, Text } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
+import { formatSessionData } from "../../lib/helper";
+import Schedule from "./Schedule";
 
 const GET_SCHEDULE = gql`
   query {

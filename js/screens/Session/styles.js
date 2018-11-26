@@ -1,7 +1,6 @@
-import { StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
-var width = Dimensions.get("window").width; //full width
+var width = Dimensions.get("window").width;
 var height = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
@@ -24,8 +23,7 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     fontSize: 20,
-    marginTop: 20,
-    backgroundColor: "yellow"
+    marginTop: 20
   },
   title: {
     fontSize: 25,
@@ -43,21 +41,15 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Light",
     marginTop: 20
   },
-  text: {
-    color: "#999999",
-    fontFamily: "Montserrat-Light",
-    fontSize: 20
-  },
-  image: {
-    width: 50,
-    height: 50,
-    marginTop: 15,
-    marginLeft: 10,
-    borderRadius: 23
-  },
+
   speakerName: {
     fontFamily: "Montserrat-Light",
     fontSize: 18
+  },
+  sessionButton: {
+    paddingVertical: 20,
+    color: "green",
+    fontSize: 16
   }
 });
 

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Text, View, SectionList, TouchableOpacity } from "react-native";
-import styles from "./styles";
 import moment from "moment";
+import React from "react";
+import { SectionList, Text, TouchableOpacity, View } from "react-native";
 import { withNavigation } from "react-navigation";
+import styles from "./styles";
 
 const Faves = ({ favList, navigation }) => {
   return (
@@ -11,12 +11,22 @@ const Faves = ({ favList, navigation }) => {
         return (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("FavesSession", { key: item.id, item });
+              navigation.navigate("FavesSession", {
+                key: item.id,
+                item
+              });
             }}
           >
             <View style={styles.itemContainer} key={index}>
               <Text style={styles.item}>{item.title}</Text>
-              <Text style={styles.heart}>♥</Text>
+              <Text style={styles.heart}>
+                <Icon
+                  style={styles.heart}
+                  name={(ios = "ios-heart-empty")}
+                  size={20}
+                  color="red"
+                />
+              </Text>
             </View>
           </TouchableOpacity>
         );
