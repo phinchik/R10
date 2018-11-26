@@ -17,7 +17,6 @@ class FaveItem extends Component {
   };
 
   render() {
-    console.log("propsss", this.props);
     return (
       <View key={this.props.id} onPress={() => this.toggleItem()}>
         {this.state.fave === true ? (

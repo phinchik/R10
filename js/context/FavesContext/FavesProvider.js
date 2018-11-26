@@ -38,7 +38,14 @@ class FavesProvider extends Component {
 
   render() {
     return (
-      <FavesContext.Provider value={{ ...this.state }}>
+      <FavesContext.Provider
+        value={{
+          ...this.state,
+          queryAllFaves: this.queryAllFaves,
+          deleteFave: this.deleteFave,
+          createFave: this.createFave
+        }}
+      >
         {this.props.children}
       </FavesContext.Provider>
     );

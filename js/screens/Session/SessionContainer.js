@@ -32,6 +32,7 @@ export default class SessionContainer extends Component {
             variables={{ SessionFilter: { id_in: faveIds } }}
           >
             {({ loading, error, data }) => {
+              console.log("this is session", data);
               if (loading) return <ActivityIndicator />;
               if (error) return <Text>{error}</Text>;
               if (data) {

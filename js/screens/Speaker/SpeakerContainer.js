@@ -10,6 +10,7 @@ const GET_SESSIONSPEAKER = gql`
   query Session($filter: SessionFilter) {
     allSessions(filter: $filter) {
       speaker {
+        bio
         name
         image
         id
@@ -28,6 +29,7 @@ export default class SpeakerContainer extends Component {
             variables={{ SessionFilter: { id_in: faveIds } }}
           >
             {({ loading, error, data }) => {
+              console.log("SPEAKERRR", data);
               if (loading) return <ActivityIndicator />;
               if (error) return <Text>{error}</Text>;
               if (data) {
@@ -35,7 +37,7 @@ export default class SpeakerContainer extends Component {
                   <Speaker
                     Id={this.props.navigation.state.params.key}
                     allSessionsSpeaker={
-                      formatSessionData(data.allSessions)[0].data.speaker
+                      formatSessionData(data.allSessions)[0].data
                     }
                   />
                 );
