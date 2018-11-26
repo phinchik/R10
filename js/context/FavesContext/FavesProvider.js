@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import realm from "../../config/models";
-// import the Realm helpers you just created here
 const FavesContext = React.createContext();
 class FavesProvider extends Component {
   constructor(props) {
@@ -21,15 +20,6 @@ class FavesProvider extends Component {
     this.getAllFaves();
   };
 
-  // allFaves = () => {
-  //   let faves = realm.objects("Faves").map(p => p.id);
-  //   return faves;
-  // };
-
-  // refreshStateIds = () => {
-  //   this.setState({ faveIds: this.allFaves() });
-  // };
-
   deleteFave = id => {
     realm.write(() => {
       realm.delete(realm.objectForPrimaryKey("Faves", id));
@@ -46,18 +36,14 @@ class FavesProvider extends Component {
     });
   }
 
-  // reset() {
-  //   this.getAllFaves();
-  // }
-
   render() {
     return (
       <FavesContext.Provider
         value={{
           ...this.state,
-          queryAllFaves: this.queryAllFaves,
           deleteFave: this.deleteFave,
-          createFave: this.createFave
+          createFave: this.createFave,
+          getAllFaves: this.getAllFaves
         }}
       >
         {this.props.children}

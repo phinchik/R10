@@ -22,6 +22,7 @@ export default class SpeakerModal extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <ScrollView>
         <Modal

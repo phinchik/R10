@@ -25,9 +25,10 @@ const styles = StyleSheet.create({
   },
   heart: {
     fontSize: 20,
-
     marginTop: 20,
-    marginRight: 10
+    position: "absolute",
+    top: 0,
+    right: 0
   },
   title: {
     fontFamily: "Montserrat-Regular",

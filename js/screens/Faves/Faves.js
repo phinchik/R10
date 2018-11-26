@@ -1,27 +1,35 @@
 import React, { Component } from "react";
-import { Text, View, SectionList } from "react-native";
+import { Text, View, SectionList, TouchableOpacity } from "react-native";
 import styles from "./styles";
+import moment from "moment";
+import { withNavigation } from "react-navigation";
 
-const Faves = ({ allSessions, faveIds }) => {
+const Faves = ({ favList, navigation }) => {
   return (
     <SectionList
-      renderItem={({ item, index, section }) => (
-        <View style={styles.itemContainer} key={index}>
-          <Text style={styles.item}>{item}</Text>
-          <Text style={styles.heart}>♥ </Text>
-        </View>
-      )}
+      renderItem={({ item, index }) => {
+        return (
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("FavesSession", { key: item.id, item });
+            }}
+          >
+            <View style={styles.itemContainer} key={index}>
+              <Text style={styles.item}>{item.title}</Text>
+              <Text style={styles.heart}>♥</Text>
+            </View>
+          </TouchableOpacity>
+        );
+      }}
       renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.header}>{title}</Text>
+        <Text style={styles.header}>
+          {moment(title.startTime).format("LT")}
+        </Text>
       )}
-      sections={[
-        { title: "Title1", data: ["item1", "item2"] },
-        { title: "Title2", data: ["item3", "item4"] },
-        { title: "Title3", data: ["item5", "item6"] }
-      ]}
+      sections={favList}
       keyExtractor={(item, index) => item + index}
     />
   );
 };
 
-export default Faves;
+export default withNavigation(Faves);

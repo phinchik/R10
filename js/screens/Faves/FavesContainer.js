@@ -31,25 +31,35 @@ class FavesContainer extends Component {
   render() {
     return (
       <FavesContext.Consumer>
-        {({ faveIds }) => (
-          <Query
-            query={GET_FAVES}
-            variables={{ SessionFilter: { id_in: faveIds } }}
-          >
-            {({ loading, error, data }) => {
-              if (loading) return <ActivityIndicator />;
-              if (error) return <Text>{error}</Text>;
-              if (data) {
-                return (
-                  <Faves
-                    faves={formatSessionData(data.allSessions)}
-                    faveIds={faveIds}
-                  />
-                );
-              }
-            }}
-          </Query>
-        )}
+        {({ faveIds, getAllFaves }) => {
+          return (
+            <Query
+              query={GET_FAVES}
+              variables={{ SessionFilter: { id_in: faveIds } }}
+            >
+              {({ loading, error, data }) => {
+                if (loading) return <ActivityIndicator />;
+                if (error) return <Text>{error}</Text>;
+                if (data) {
+                  const faves = faveIds.map(fave => Object.assign({}, fave));
+
+                  const ids = [];
+
+                  for (let i = 0; i < faves.length; i++) {
+                    ids.push(faves[i].id);
+                  }
+
+                  const favList = data.allSessions.filter(session => {
+                    if (ids.includes(session.id)) {
+                      return session;
+                    }
+                  });
+                  return <Faves favList={formatSessionData(favList)} />;
+                }
+              }}
+            </Query>
+          );
+        }}
       </FavesContext.Consumer>
     );
   }

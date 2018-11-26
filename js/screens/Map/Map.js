@@ -8,7 +8,7 @@ class Map extends Component {
     return (
       <View style={styles.container}>
         <Text>Map</Text>
-        {/* <MapView
+        <MapView
           style={styles.map}
           initialRegion={{
             latitude: 49.2827,
@@ -16,7 +16,7 @@ class Map extends Component {
             latitudeDelta: 1,
             longitudeDelta: 1
           }}
-        /> */}
+        />
       </View>
     );
   }

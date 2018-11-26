@@ -3,6 +3,7 @@ import { Text, View, SectionList, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { withNavigation } from "react-navigation";
 import moment from "moment";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const Schedule = ({ sessions, navigation, faveIds }) => {
   return (
@@ -19,16 +20,26 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>{item.location}</Text>
             </TouchableOpacity>
-
-            {/* <Text style={styles.heart}>♥</Text> */}
-            <Text style={{ color: isFaved ? "red" : "black" }}>HEART</Text>
+            {isFaved ? (
+              <Icon
+                style={styles.heart}
+                name={(ios = "ios-heart-empty")}
+                size={20}
+                color="red"
+              />
+            ) : (
+              <Icon
+                style={styles.heart}
+                name={(ios = "ios-heart-empty")}
+                size={20}
+                color="#999999"
+              />
+            )}
           </View>
         );
       }}
       renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.header}>
-          {moment(title.startTime).format("LT")}
-        </Text>
+        <Text style={styles.header}>{moment(title).format("LT")}</Text>
       )}
       sections={sessions}
       keyExtractor={(item, index) => item + index}

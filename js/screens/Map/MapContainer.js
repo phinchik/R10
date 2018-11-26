@@ -16,7 +16,7 @@ export default class MapContainer extends Component {
   render() {
     return (
       <View>
-        <Text>hello from map</Text>
+        <Map />
       </View>
     );
   }

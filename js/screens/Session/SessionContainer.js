@@ -12,6 +12,7 @@ const GET_SESSIONDATA = gql`
       location
       title
       id
+      startTime
       description
       speaker {
         name
@@ -24,31 +25,36 @@ const GET_SESSIONDATA = gql`
 `;
 
 export default class SessionContainer extends Component {
+  static navigationOptions = {
+    title: "Session"
+  };
   render() {
     return (
       <FavesContext.Consumer>
-        {({ faveIds, createFave, deleteFave, getAllFaves }) => (
-          <Query
-            query={GET_SESSIONDATA}
-            variables={{ SessionFilter: { id_in: faveIds } }}
-          >
-            {({ loading, error, data }) => {
-              if (loading) return <ActivityIndicator />;
-              if (error) return <Text>{error}</Text>;
-              if (data) {
-                return (
-                  <Session
-                    sessionId={this.props.navigation.state.params.key}
-                    allSessions={formatSessionData(data.allSessions)}
-                    sessionIds={faveIds}
-                    createFave={createFave}
-                    deleteFave={deleteFave}
-                  />
-                );
-              }
-            }}
-          </Query>
-        )}
+        {({ faveIds, createFave, deleteFave }) => {
+          return (
+            <Query
+              query={GET_SESSIONDATA}
+              variables={{ SessionFilter: { id_in: faveIds } }}
+            >
+              {({ loading, error, data }) => {
+                if (loading) return <ActivityIndicator />;
+                if (error) return <Text>{error}</Text>;
+                if (data) {
+                  return (
+                    <Session
+                      sessionId={this.props.navigation.state.params.key}
+                      allSessions={formatSessionData(data.allSessions)}
+                      sessionIds={faveIds}
+                      createFave={createFave}
+                      deleteFave={deleteFave}
+                    />
+                  );
+                }
+              }}
+            </Query>
+          );
+        }}
       </FavesContext.Consumer>
     );
   }
