@@ -1,10 +1,11 @@
 import moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import SpeakerModal from "../../components/SpeakerModal";
 import styles from "./styles";
+import LinearGradient from "react-native-linear-gradient";
 
 const Session = ({
   sessionId,
@@ -27,19 +28,19 @@ const Session = ({
 
   const isFaved = favouriteId.includes(session.id);
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.location}>{session.location}</Text>
       {isFaved ? (
         <Icon
           style={styles.heart}
-          name={(ios = "ios-heart-empty")}
+          name={(ios = "ios-heart")}
           size={20}
           color="red"
         />
       ) : (
         <Icon
           style={styles.heart}
-          name={(ios = "ios-heart-empty")}
+          name={(ios = "ios-heart")}
           size={20}
           color="#999999"
         />
@@ -50,7 +51,7 @@ const Session = ({
       <Text style={styles.description}>{session.description}</Text>
 
       <View style={styles.speakerContainer}>
-        <Text>Presented by:</Text>
+        <Text style={styles.presentedBy}>Presented by:</Text>
         <SpeakerModal speaker={session.speaker} />
       </View>
       <TouchableOpacity
@@ -62,15 +63,29 @@ const Session = ({
           }
         }}
       >
-        <Text>
+        <Text style={styles.gradientContainer}>
           {isFaved ? (
-            <Text style={styles.sessionButton}>Remove From Faves</Text>
+            <LinearGradient
+              colors={["#9963ea", "#8797D6"]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
+              style={styles.linearGradient}
+            >
+              <Text style={styles.sessionButton}>Remove From Faves</Text>
+            </LinearGradient>
           ) : (
-            <Text style={styles.sessionButton}>Add To Faves</Text>
+            <LinearGradient
+              colors={["#9963ea", "#8797D6"]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
+              style={styles.linearGradient}
+            >
+              <Text style={styles.sessionButton}>Add To Faves</Text>
+            </LinearGradient>
           )}
         </Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -78,7 +93,7 @@ Session.propTypes = {
   sessionId: PropTypes.string,
   createFave: PropTypes.func,
   deleteFave: PropTypes.func,
-  favouriteId: PropTypes.object
+  favouriteId: PropTypes.array
 };
 
 export default Session;

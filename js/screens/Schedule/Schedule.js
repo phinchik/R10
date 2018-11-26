@@ -23,14 +23,14 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
             {isFaved ? (
               <Icon
                 style={styles.heart}
-                name={(ios = "ios-heart-empty")}
+                name={(ios = "ios-heart")}
                 size={20}
                 color="red"
               />
             ) : (
               <Icon
                 style={styles.heart}
-                name={(ios = "ios-heart-empty")}
+                name={(ios = "ios-heart")}
                 size={20}
                 color="#999999"
               />

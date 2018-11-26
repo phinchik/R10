@@ -41,13 +41,14 @@ export default class SpeakerModal extends Component {
                   showModal: false
                 })
               }
+              style={styles.buttonX}
               title="x"
             />
-            <Text style={styles.text}>About the Speaker</Text>
+            <Text style={styles.AboutText}>About the Speaker</Text>
           </View>
           <ScrollView>
             <Image style={styles.image} source={{ uri: image }} />
-            <Text>{name}</Text>
+            <Text style={styles.speakerName}>{name}</Text>
             <Text>{bio}</Text>
           </ScrollView>
         </Modal>
@@ -61,7 +62,7 @@ export default class SpeakerModal extends Component {
         >
           <View style={styles.speaker}>
             <Image source={{ uri: image }} style={styles.image} />
-            <Text>{name}</Text>
+            <Text style={styles.speakerName}>{name}</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

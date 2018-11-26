@@ -5,6 +5,7 @@ import { ActivityIndicator, Text } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
 import { formatSessionData } from "../../lib/helper";
 import Session from "./Session";
+import LinearGradient from "react-native-linear-gradient";
 
 const GET_SESSIONDATA = gql`
   query Session($filter: SessionFilter) {

@@ -9,21 +9,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginRight: 10,
     marginLeft: 10,
+    marginTop: 20,
     height: height
   },
   location: {
     color: "#999999",
     width: width,
-    marginTop: 20,
-    fontSize: 20,
+    marginTop: 30,
+    fontSize: 30,
     fontFamily: "Montserrat-Light"
   },
   heart: {
     position: "absolute",
     right: 0,
     top: 0,
-    fontSize: 20,
-    marginTop: 20
+    fontSize: 25
   },
   title: {
     fontSize: 25,
@@ -48,8 +48,35 @@ const styles = StyleSheet.create({
   },
   sessionButton: {
     paddingVertical: 20,
-    color: "green",
-    fontSize: 16
+    color: "yellow",
+    fontSize: 40,
+    textAlign: "center",
+    margin: "auto",
+    fontFamily: "Montserrat-Light"
+  },
+  linearGradient: {
+    width: 200,
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderRadius: 50,
+    alignItems: "center"
+  },
+  location: {
+    color: "#999999",
+    fontFamily: "Montserrat-Light",
+    marginBottom: 5,
+    paddingRight: 10,
+    paddingLeft: 10
+  },
+  presentedBy: {
+    color: "#999999",
+    width: width,
+    marginTop: 30,
+    fontSize: 20,
+    fontFamily: "Montserrat-Light"
+  },
+  gradientContainer: {
+    marginLeft: 50
   }
 });
 
