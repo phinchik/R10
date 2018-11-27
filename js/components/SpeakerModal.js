@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { get } from "lodash";
 import styles from "./styles";
+import Icon from "react-native-vector-icons/Ionicons";
+import LinearGradient from "react-native-linear-gradient";
 
 export default class SpeakerModal extends Component {
   constructor(props) {
@@ -34,23 +36,34 @@ export default class SpeakerModal extends Component {
           visible={this.state.showModal}
           onRequestClose={() => this.setState({ showModal: false })}
         >
-          <View>
-            <Button
-              onPress={() =>
-                this.setState({
-                  showModal: false
-                })
-              }
-              style={styles.buttonX}
-              title="x"
-            />
-            <Text style={styles.AboutText}>About the Speaker</Text>
+          <View style={styles.root}>
+            <View style={styles.title}>
+              <TouchableOpacity
+                onPress={() =>
+                  this.setState({
+                    showModal: false
+                  })
+                }
+              >
+                <Icon name={(ios = "ios-close")} size={30} style={styles.X} />
+              </TouchableOpacity>
+
+              <Text style={styles.AboutText}>About the Speaker</Text>
+            </View>
+            <ScrollView style={styles.speakerContainer}>
+              <Image style={styles.aboutImage} source={{ uri: image }} />
+              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.bio}>{bio}</Text>
+              <LinearGradient
+                colors={["#9963ea", "#8797D6"]}
+                start={{ x: 0.0, y: 1.0 }}
+                end={{ x: 1.0, y: 0.0 }}
+                style={styles.linearGradient}
+              >
+                <Text style={styles.linearText}>Read More on Wikipedia</Text>
+              </LinearGradient>
+            </ScrollView>
           </View>
-          <ScrollView>
-            <Image style={styles.image} source={{ uri: image }} />
-            <Text style={styles.speakerName}>{name}</Text>
-            <Text>{bio}</Text>
-          </ScrollView>
         </Modal>
 
         <TouchableOpacity

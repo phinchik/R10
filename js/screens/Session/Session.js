@@ -1,11 +1,11 @@
 import moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
-import { Text, TouchableOpacity, View, ScrollView } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/Ionicons";
 import SpeakerModal from "../../components/SpeakerModal";
 import styles from "./styles";
-import LinearGradient from "react-native-linear-gradient";
 
 const Session = ({
   sessionId,
@@ -63,27 +63,31 @@ const Session = ({
           }
         }}
       >
-        <Text style={styles.gradientContainer}>
+        <View>
           {isFaved ? (
-            <LinearGradient
-              colors={["#9963ea", "#8797D6"]}
-              start={{ x: 0.0, y: 1.0 }}
-              end={{ x: 1.0, y: 0.0 }}
-              style={styles.linearGradient}
-            >
-              <Text style={styles.sessionButton}>Remove From Faves</Text>
-            </LinearGradient>
+            <View>
+              <LinearGradient
+                colors={["#9963ea", "#8797D6"]}
+                start={{ x: 0.0, y: 1.0 }}
+                end={{ x: 1.0, y: 0.0 }}
+                style={styles.linearGradient}
+              >
+                <Text style={styles.sessionButton}>Remove From Faves</Text>
+              </LinearGradient>
+            </View>
           ) : (
-            <LinearGradient
-              colors={["#9963ea", "#8797D6"]}
-              start={{ x: 0.0, y: 1.0 }}
-              end={{ x: 1.0, y: 0.0 }}
-              style={styles.linearGradient}
-            >
-              <Text style={styles.sessionButton}>Add To Faves</Text>
-            </LinearGradient>
+            <View>
+              <LinearGradient
+                colors={["#9963ea", "#8797D6"]}
+                start={{ x: 0.0, y: 1.0 }}
+                end={{ x: 1.0, y: 0.0 }}
+                style={styles.linearGradient}
+              >
+                <Text style={styles.sessionButton}>Add To Faves</Text>
+              </LinearGradient>
+            </View>
           )}
-        </Text>
+        </View>
       </TouchableOpacity>
     </ScrollView>
   );

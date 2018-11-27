@@ -47,17 +47,16 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   sessionButton: {
-    paddingVertical: 20,
-    color: "yellow",
-    fontSize: 40,
+    fontSize: 20,
     textAlign: "center",
-    margin: "auto",
+    color: "white",
+    marginTop: 10,
     fontFamily: "Montserrat-Light"
   },
   linearGradient: {
-    width: 200,
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: 250,
+    height: 50,
+    alignSelf: "center",
     borderRadius: 50,
     alignItems: "center"
   },
@@ -74,9 +73,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
     fontSize: 20,
     fontFamily: "Montserrat-Light"
-  },
-  gradientContainer: {
-    marginLeft: 50
   }
 });
 
