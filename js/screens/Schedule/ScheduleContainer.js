@@ -19,6 +19,9 @@ const GET_SCHEDULE = gql`
 `;
 
 export default class ScheduleContainer extends Component {
+  static navigationOptions = {
+    title: "Schedule"
+  };
   render() {
     return (
       <FavesContext.Consumer>

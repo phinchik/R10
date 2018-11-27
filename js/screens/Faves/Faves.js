@@ -4,6 +4,7 @@ import { SectionList, Text, TouchableOpacity, View } from "react-native";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
+import PropTypes from "prop-types";
 
 const Faves = ({ favList, navigation }) => {
   return (
@@ -40,6 +41,11 @@ const Faves = ({ favList, navigation }) => {
       keyExtractor={(item, index) => item + index}
     />
   );
+};
+
+Faves.propTypes = {
+  favList: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired
 };
 
 export default withNavigation(Faves);

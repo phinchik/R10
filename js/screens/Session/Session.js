@@ -94,10 +94,11 @@ const Session = ({
 };
 
 Session.propTypes = {
-  sessionId: PropTypes.string,
-  createFave: PropTypes.func,
-  deleteFave: PropTypes.func,
-  favouriteId: PropTypes.array
+  sessionId: PropTypes.string.isRequired,
+  createFave: PropTypes.func.isRequired,
+  deleteFave: PropTypes.func.isRequired,
+  favouriteId: PropTypes.array.isRequired,
+  allSessions: PropTypes.array.isRequired
 };
 
 export default Session;

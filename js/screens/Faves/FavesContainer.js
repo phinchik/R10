@@ -31,7 +31,7 @@ class FavesContainer extends Component {
   render() {
     return (
       <FavesContext.Consumer>
-        {({ faveIds, getAllFaves }) => {
+        {({ faveIds }) => {
           return (
             <Query
               query={GET_FAVES}

@@ -1,6 +1,6 @@
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
-import { Text, View } from "react-native";
+import { Text, ActivityIndicator } from "react-native";
 import About from "./About";
 import React, { Component } from "react";
 
@@ -15,11 +15,14 @@ const getQuery = gql`
 `;
 
 class AboutContainer extends Component {
+  static navigationOptions = {
+    title: "About"
+  };
   render() {
     return (
       <Query query={getQuery}>
         {({ loading, error, data }) => {
-          if (loading) return <Text>Loading</Text>;
+          if (loading) return <ActivityIndicator />;
           if (error) return <Text>Error</Text>;
           return <About data={data} />;
         }}

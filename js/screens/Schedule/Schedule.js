@@ -4,6 +4,7 @@ import { SectionList, Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Schedule = ({ sessions, navigation, faveIds }) => {
   return (
@@ -45,6 +46,12 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
       keyExtractor={(item, index) => item + index}
     />
   );
+};
+
+Schedule.propTypes = {
+  sessions: PropTypes.array.isRequired,
+  navigation: PropTypes.object.isRequired,
+  faveIds: PropTypes.array.isRequired
 };
 
 export default withNavigation(Schedule);

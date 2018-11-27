@@ -2,6 +2,7 @@ import React from "react";
 import { Image, ScrollView, Text, View } from "react-native";
 import ConductItem from "../../components/ConductItem";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const About = ({ data }) => {
   return (
@@ -38,6 +39,10 @@ const About = ({ data }) => {
       </View>
     </View>
   );
+};
+
+About.propTypes = {
+  data: PropTypes.object.isRequired
 };
 
 export default About;

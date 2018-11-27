@@ -52,7 +52,6 @@ export default class SessionContainer extends Component {
                     <Session
                       sessionId={this.props.navigation.state.params.key}
                       allSessions={formatSessionData(data.allSessions)}
-                      sessionIds={faveIds}
                       createFave={createFave}
                       deleteFave={deleteFave}
                       favouriteId={ids}

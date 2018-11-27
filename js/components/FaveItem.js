@@ -13,14 +13,6 @@ class FaveItem extends Component {
     };
   }
 
-  // toggleItem = () => {
-  //   this.setState({ fave: !this.state.fave });
-  // };
-
-  // faveSchedule = () => {
-  //   alert("test");
-  // };
-
   render() {
     return (
       <FavesContext.Consumer>
@@ -42,27 +34,5 @@ class FaveItem extends Component {
     );
   }
 }
-
-// FaveItem.propTypes = {
-//   id: PropTypes.string.isRequired
-// };
-
-// {
-//   this.state.fave === true ? (
-//     <Icon
-//       style={{ fontSize: 25 }}
-//       name={(ios = "ios-heart-empty")}
-//       size={20}
-//       color="red"
-//     />
-//   ) : (
-//     <Icon
-//       style={{ fontSize: 25 }}
-//       name={(ios = "ios-heart-empty")}
-//       size={20}
-//       color="#999999"
-//     />
-//   )
-// }
 
 export default FaveItem;

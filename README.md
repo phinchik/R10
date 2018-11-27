@@ -16,13 +16,18 @@
 
 - react-native run-android
 
+## IMPORTANT NOTES
+
+- For Android: Make sure to install Android Studio and phone Emulator.
+- For iOS: Make sure Xcode and React Navite Debugger(for debugging and Dev tools) are installed
+
 ## AUTHOR
 
 - Jenny Gutierrez
 
 ## DESCRIPTION AND OBJECTIVES
 
-- The Objective of this project is to create a mobile application called "R10". The Application allows users to View a Schedule Session and the Speaker of that Session. And in addition they can tap the Heart icon and they can view it in their Faves (Favourite).
+- The Objective of this project is to create a mobile application called "R10". The Application allows users to View a Schedule Session and the Profile of the Speaker of that particular Session. And in addition they can Add that session to their favourite and Delete it.
 
 ## TECHNOLOGIES USED
 

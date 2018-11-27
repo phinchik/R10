@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { View } from "react-native";
-import Map from "../Map";
+import Map from "./Map";
 
-export default class MapContainer extends Component {
-  render() {
-    return (
-      <View>
-        <Map />
-      </View>
-    );
-  }
-}
+const MapContainer = () => {
+  return (
+    <View>
+      <Map />
+    </View>
+  );
+};
+
+export default MapContainer;
