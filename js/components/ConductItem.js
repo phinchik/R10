@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, ScrollView } from "react-native";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
@@ -18,18 +18,21 @@ class ConductItem extends Component {
 
   render() {
     return (
-      <View key={this.props.conduct.id}>
+      <ScrollView key={this.props.conduct.id}>
         <TouchableOpacity onPress={() => this.toggleItem()}>
           <View>
-            <Text style={styles.itemTitle}>
+            <View style={styles.itemTitle}>
               <Icon
-                style={{ fontSize: 25 }}
+                style={{ fontSize: 25, paddingRight: 10 }}
                 name={(ios = "ios-add")}
                 size={20}
                 color="#9963ea"
               />
-              {this.props.conduct.title}
-            </Text>
+
+              <Text style={styles.conductTitle}>
+                {this.props.conduct.title}
+              </Text>
+            </View>
             {this.state.show && (
               <Text style={styles.itemDescription}>
                 {this.props.conduct.description}
@@ -37,7 +40,7 @@ class ConductItem extends Component {
             )}
           </View>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     );
   }
 }

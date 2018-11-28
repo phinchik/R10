@@ -1,6 +1,12 @@
 import moment from "moment";
 import React from "react";
-import { SectionList, Text, TouchableOpacity, View } from "react-native";
+import {
+  SectionList,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform
+} from "react-native";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -25,7 +31,10 @@ const Faves = ({ favList, navigation }) => {
               <Text style={styles.heart}>
                 <Icon
                   style={styles.heart}
-                  name={(ios = "ios-heart")}
+                  name={Platform.select({
+                    ios: "ios-heart",
+                    android: "md-heart"
+                  })}
                   size={20}
                   color="red"
                 />

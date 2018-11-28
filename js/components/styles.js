@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#9963ea",
     fontSize: 20,
+    fontFamily: "Montserrat-Light",
+    flexDirection: "row"
+  },
+  conductTitle: {
+    alignSelf: "center",
+    color: "#9963ea",
+    fontSize: 20,
     fontFamily: "Montserrat-Light"
   },
   itemDescription: {

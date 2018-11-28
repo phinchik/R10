@@ -1,6 +1,12 @@
 import moment from "moment";
 import React from "react";
-import { SectionList, Text, TouchableOpacity, View } from "react-native";
+import {
+  SectionList,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform
+} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { withNavigation } from "react-navigation";
 import styles from "./styles";
@@ -24,14 +30,20 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
             {isFaved ? (
               <Icon
                 style={styles.heart}
-                name={(ios = "ios-heart")}
+                name={Platform.select({
+                  ios: "ios-heart",
+                  android: "md-heart"
+                })}
                 size={20}
                 color="red"
               />
             ) : (
               <Icon
                 style={styles.heart}
-                name={(ios = "ios-heart")}
+                name={Platform.select({
+                  ios: "ios-heart",
+                  android: "md-heart"
+                })}
                 size={20}
                 color="#999999"
               />

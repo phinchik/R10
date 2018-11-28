@@ -1,7 +1,13 @@
 import moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+  Platform
+} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/Ionicons";
 import SpeakerModal from "../../components/SpeakerModal";
@@ -33,14 +39,20 @@ const Session = ({
       {isFaved ? (
         <Icon
           style={styles.heart}
-          name={(ios = "ios-heart")}
+          name={Platform.select({
+            ios: "ios-heart",
+            android: "md-heart"
+          })}
           size={20}
           color="red"
         />
       ) : (
         <Icon
           style={styles.heart}
-          name={(ios = "ios-heart")}
+          name={Platform.select({
+            ios: "ios-heart",
+            android: "md-heart"
+          })}
           size={20}
           color="#999999"
         />
