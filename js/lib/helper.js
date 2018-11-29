@@ -1,4 +1,3 @@
-// Helper to format GraphQL data into section list data
 export const formatSessionData = sessions => {
   if (sessions) {
     return sessions

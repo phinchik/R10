@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#e6e6e6",
     width: width,
     height: 25,
-    paddingLeft: 10
+    paddingLeft: 10,
+    paddingTop: 5,
+    fontFamily: "Montserrat-Light"
   },
   heart: {
     fontSize: 20,

@@ -33,28 +33,18 @@ class FavesContainer extends Component {
       <FavesContext.Consumer>
         {({ faveIds }) => {
           return (
-            <Query
-              query={GET_FAVES}
-              variables={{ SessionFilter: { id_in: faveIds } }}
-            >
+            <Query query={GET_FAVES} variables={{ filter: { id_in: faveIds } }}>
               {({ loading, error, data }) => {
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>{error}</Text>;
                 if (data) {
-                  const faves = faveIds.map(fave => Object.assign({}, fave));
-
-                  const ids = [];
-
-                  for (let i = 0; i < faves.length; i++) {
-                    ids.push(faves[i].id);
-                  }
-
-                  const favList = data.allSessions.filter(session => {
-                    if (ids.includes(session.id)) {
-                      return session;
-                    }
-                  });
-                  return <Faves favList={formatSessionData(favList)} />;
+                  return (
+                    <Faves
+                      favList={formatSessionData(data.allSessions)}
+                      faveIds={faveIds}
+                      navigation={this.props.navigation}
+                    />
+                  );
                 }
               }}
             </Query>

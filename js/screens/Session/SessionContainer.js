@@ -3,13 +3,11 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import { ActivityIndicator, Text } from "react-native";
 import FavesContext from "../../context/FavesContext/FavesProvider";
-import { formatSessionData } from "../../lib/helper";
 import Session from "./Session";
-import LinearGradient from "react-native-linear-gradient";
 
 const GET_SESSIONDATA = gql`
-  query Session($filter: SessionFilter) {
-    allSessions(filter: $filter) {
+  query Session($id: ID) {
+    Session(id: $id) {
       location
       title
       id
@@ -27,42 +25,31 @@ const GET_SESSIONDATA = gql`
 
 export default class SessionContainer extends Component {
   static navigationOptions = {
-    title: "Session"
+    title: "Session",
+    headerTintColor: "white"
   };
   render() {
+    const { id } = this.props.navigation.state.params;
     return (
-      <FavesContext.Consumer>
-        {({ faveIds, createFave, deleteFave }) => {
-          return (
-            <Query
-              query={GET_SESSIONDATA}
-              variables={{ SessionFilter: { id_in: faveIds } }}
-            >
-              {({ loading, error, data }) => {
-                const ids = [];
-
-                for (let i = 0; i < faveIds.length; i++) {
-                  ids.push(faveIds[i].id);
-                }
-
-                if (loading) return <ActivityIndicator />;
-                if (error) return <Text>{error}</Text>;
-                if (data) {
-                  return (
-                    <Session
-                      sessionId={this.props.navigation.state.params.key}
-                      allSessions={formatSessionData(data.allSessions)}
-                      createFave={createFave}
-                      deleteFave={deleteFave}
-                      favouriteId={ids}
-                    />
-                  );
-                }
-              }}
-            </Query>
-          );
+      <Query query={GET_SESSIONDATA} variables={{ id }}>
+        {({ loading, error, data }) => {
+          if (loading) return <ActivityIndicator />;
+          if (error) return <Text>{error}</Text>;
+          if (data) {
+            return (
+              <FavesContext.Consumer>
+                {values => (
+                  <Session
+                    data={data.Session}
+                    faveIds={values.faveIds}
+                    methods={values}
+                  />
+                )}
+              </FavesContext.Consumer>
+            );
+          }
         }}
-      </FavesContext.Consumer>
+      </Query>
     );
   }
 }

@@ -9,7 +9,6 @@ import Schedule from "./Schedule";
 const GET_SCHEDULE = gql`
   query {
     allSessions {
-      description
       id
       location
       startTime
@@ -24,32 +23,27 @@ export default class ScheduleContainer extends Component {
   };
   render() {
     return (
-      <FavesContext.Consumer>
-        {({ faveIds }) => {
-          return (
-            <Query query={GET_SCHEDULE}>
-              {({ loading, error, data }) => {
-                const ids = [];
-
-                for (let i = 0; i < faveIds.length; i++) {
-                  ids.push(faveIds[i].id);
-                }
-
-                if (loading) return <ActivityIndicator />;
-                if (error) return <Text>{error}</Text>;
-                if (data) {
+      <Query query={GET_SCHEDULE}>
+        {({ loading, error, data }) => {
+          if (loading) return <ActivityIndicator />;
+          if (error) return <Text>{error}</Text>;
+          if (data) {
+            return (
+              <FavesContext.Consumer>
+                {({ faveIds }) => {
                   return (
                     <Schedule
-                      faveIds={ids}
+                      faveIds={faveIds}
                       sessions={formatSessionData(data.allSessions)}
+                      navigation={this.props.navigation}
                     />
                   );
-                }
-              }}
-            </Query>
-          );
+                }}
+              </FavesContext.Consumer>
+            );
+          }
         }}
-      </FavesContext.Consumer>
+      </Query>
     );
   }
 }

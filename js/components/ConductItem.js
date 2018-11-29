@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Animated,
+  Easing
+} from "react-native";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
@@ -8,13 +15,26 @@ class ConductItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      show: false,
+      opacity: new Animated.Value(0)
     };
   }
 
   toggleItem = () => {
-    this.setState({ show: !this.state.show });
+    const toggleShow = !this.state.show;
+    this.startAnimation(this.toggleShow);
+    this.setState({
+      show: !this.state.show
+    });
   };
+
+  startAnimation() {
+    Animated.timing(this.state.opacity, {
+      toValue: 1,
+      duration: 800,
+      easing: Easing.elastic(0.5)
+    }).start();
+  }
 
   render() {
     return (

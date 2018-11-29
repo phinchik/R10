@@ -21,13 +21,13 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
           <View style={styles.itemContainer} key={item.id}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("Session", { key: item.id, item });
+                navigation.navigate("Session", { id: item.id });
               }}
             >
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>{item.location}</Text>
             </TouchableOpacity>
-            {isFaved ? (
+            {faveIds.includes(item.id) ? (
               <Icon
                 style={styles.heart}
                 name={Platform.select({

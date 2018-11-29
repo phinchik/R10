@@ -12,20 +12,19 @@ import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
 
-const Faves = ({ favList, navigation }) => {
+const Faves = ({ favList, navigation, faveIds }) => {
   return (
     <SectionList
-      renderItem={({ item, index }) => {
+      renderItem={({ item }) => {
         return (
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("FavesSession", {
-                key: item.id,
-                item
+                id: item.id
               });
             }}
           >
-            <View style={styles.itemContainer} key={index}>
+            <View style={styles.itemContainer} key={item.id}>
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>{item.location}</Text>
               <Text style={styles.heart}>

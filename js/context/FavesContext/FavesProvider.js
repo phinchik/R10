@@ -40,7 +40,7 @@ class FavesProvider extends Component {
   getAllFaves = async () => {
     try {
       realm.write(() => {
-        let favs = realm.objects("Faves");
+        let favs = realm.objects("Faves").map(fave => fave.id);
         this.setState({ faveIds: favs });
       });
     } catch (err) {
