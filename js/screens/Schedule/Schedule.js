@@ -27,7 +27,7 @@ const Schedule = ({ sessions, navigation, faveIds }) => {
               <Text style={styles.title}>{item.title}</Text>
               <Text style={styles.location}>{item.location}</Text>
             </TouchableOpacity>
-            {faveIds.includes(item.id) ? (
+            {isFaved ? (
               <Icon
                 style={styles.heart}
                 name={Platform.select({

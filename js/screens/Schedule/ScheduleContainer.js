@@ -19,7 +19,11 @@ const GET_SCHEDULE = gql`
 
 export default class ScheduleContainer extends Component {
   static navigationOptions = {
-    title: "Schedule"
+    title: "Schedule",
+    headerTitleStyle: {
+      color: "white",
+      fontFamily: "Montserrat"
+    }
   };
   render() {
     return (

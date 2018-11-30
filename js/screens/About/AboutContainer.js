@@ -16,7 +16,11 @@ const getQuery = gql`
 
 class AboutContainer extends Component {
   static navigationOptions = {
-    title: "About"
+    title: "About",
+    headerTitleStyle: {
+      color: "white",
+      fontFamily: "Montserrat"
+    }
   };
   render() {
     return (

@@ -26,7 +26,11 @@ const GET_SESSIONS = gql`
 
 class FavesContainer extends Component {
   static navigationOptions = {
-    title: "Faves"
+    title: "Faves",
+    headerTitleStyle: {
+      color: "white",
+      fontFamily: "Montserrat"
+    }
   };
   render() {
     return (

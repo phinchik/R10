@@ -26,7 +26,11 @@ const GET_SESSIONDATA = gql`
 export default class SessionContainer extends Component {
   static navigationOptions = {
     title: "Session",
-    headerTintColor: "white"
+    headerTitleStyle: {
+      color: "white",
+      fontFamily: "Montserrat"
+    },
+    headerTintColor: "#fff"
   };
   render() {
     const { id } = this.props.navigation.state.params;
