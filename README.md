@@ -8,18 +8,22 @@
 - cd to R10
 - npm install
 
-## TO RUN IN IOS
-
-- react-native run-ios --simulator="(whatever iphone you want e.g(iPhone SE, X, 8, 8s))"
-
-## TO RUN IN ANDROID
-
-- react-native run-android
-
 ## IMPORTANT NOTES
 
 - For Android: Make sure to install Android Studio and phone Emulator.
 - For iOS: Make sure Xcode and React Navite Debugger(for debugging and Dev tools) are installed
+
+## TO RUN IN IOS
+
+- react-native run-ios --simulator="(whatever iphone you want e.g(iPhone SE, X, 8, 8s))"
+
+## TO RUN THE DEBUGGER IN IOS
+
+- Command + D then click the Debug JS Remotely
+
+## TO RUN IN ANDROID
+
+- react-native run-android
 
 ## AUTHOR
 

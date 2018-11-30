@@ -6,7 +6,7 @@ import FavesContext from "../../context/FavesContext/FavesProvider";
 import { ActivityIndicator, View, Text } from "react-native";
 import { formatSessionData } from "../../lib/helper";
 
-const GET_FAVES = gql`
+const GET_SESSIONS = gql`
   query($filter: SessionFilter) {
     allSessions(filter: $filter) {
       id
@@ -33,7 +33,10 @@ class FavesContainer extends Component {
       <FavesContext.Consumer>
         {({ faveIds }) => {
           return (
-            <Query query={GET_FAVES} variables={{ filter: { id_in: faveIds } }}>
+            <Query
+              query={GET_SESSIONS}
+              variables={{ filter: { id_in: faveIds } }}
+            >
               {({ loading, error, data }) => {
                 if (loading) return <ActivityIndicator />;
                 if (error) return <Text>{error}</Text>;

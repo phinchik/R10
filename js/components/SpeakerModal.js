@@ -7,7 +7,6 @@ import {
   ScrollView,
   TouchableOpacity
 } from "react-native";
-import { get } from "lodash";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import LinearGradient from "react-native-linear-gradient";
@@ -25,9 +24,6 @@ export default class SpeakerModal extends Component {
   }
 
   render() {
-    const image = get(this.props.speaker, "image");
-    const name = get(this.props.speaker, "name");
-    const bio = get(this.props.speaker, "bio");
     return (
       <ScrollView>
         <Modal
@@ -50,9 +46,12 @@ export default class SpeakerModal extends Component {
               <Text style={styles.AboutText}>About the Speaker</Text>
             </View>
             <ScrollView style={styles.speakerContainer}>
-              <Image style={styles.aboutImage} source={{ uri: image }} />
-              <Text style={styles.name}>{name}</Text>
-              <Text style={styles.bio}>{bio}</Text>
+              <Image
+                style={styles.aboutImage}
+                source={{ uri: this.props.speaker.image }}
+              />
+              <Text style={styles.name}>{this.props.speaker.name}</Text>
+              <Text style={styles.bio}>{this.props.speaker.bio}</Text>
               <LinearGradient
                 colors={["#9963ea", "#8797D6"]}
                 start={{ x: 0.0, y: 1.0 }}
@@ -73,8 +72,11 @@ export default class SpeakerModal extends Component {
           }
         >
           <View style={styles.speaker}>
-            <Image source={{ uri: image }} style={styles.image} />
-            <Text style={styles.speakerName}>{name}</Text>
+            <Image
+              source={{ uri: this.props.speaker.image }}
+              style={styles.image}
+            />
+            <Text style={styles.speakerName}>{this.props.speaker.name}</Text>
           </View>
         </TouchableOpacity>
       </ScrollView>

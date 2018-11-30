@@ -15,7 +15,7 @@ class FavesProvider extends Component {
 
   createFave = async (id, date) => {
     try {
-      realm.write(() => {
+      await realm.write(() => {
         realm.create("Faves", { id, faved_on: new Date() });
       });
       this.getAllFaves();
@@ -26,7 +26,7 @@ class FavesProvider extends Component {
 
   deleteFave = async id => {
     try {
-      realm.write(() => {
+      await realm.write(() => {
         realm.delete(realm.objectForPrimaryKey("Faves", id));
         let favs = realm.objects("Faves");
         this.setState({ faveIds: favs });
@@ -39,7 +39,7 @@ class FavesProvider extends Component {
 
   getAllFaves = async () => {
     try {
-      realm.write(() => {
+      await realm.write(() => {
         let favs = realm.objects("Faves").map(fave => fave.id);
         this.setState({ faveIds: favs });
       });
